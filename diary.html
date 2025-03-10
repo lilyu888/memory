@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-03-10 | 我的日记</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #4A90E2, #1C3D5A);
+            color: white;
+        }
+        .container {
+            width: 70%;
+            padding: 20px;
+        }
+        .comment-section {
+            width: 30%;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        textarea, input, button {
+            width: 100%;
+            margin-top: 10px;
+        }
+        textarea {
+            height: 200px;
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+            border: none;
+            padding: 10px;
+        }
+        .image-upload {
+            margin-top: 10px;
+        }
+        img {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+        .nav-buttons {
+            margin-top: 20px;
+        }
+        .nav-buttons a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📅 2025-03-10</h1>
+        <input type="text" id="title" placeholder="请输入日记标题" value="第一篇日记">
+        <textarea id="content" placeholder="在这里写下你的日记..."></textarea>
+
+        <div class="image-upload">
+            <input type="file" id="imageInput">
+            < img id="previewImage" src="" alt="">
+        </div>
+
+        <div class="nav-buttons">
+            下一篇 ➡️
+            🏠 返回主页
+        </div>
+    </div>
+
+    <div class="comment-section">
+        <h3>📝 朋友留言</h3>
+        <textarea id="commentInput" placeholder="在这里输入留言..."></textarea>
+        <button onclick="addComment()">提交留言</button>
+        <div id="comments"></div>
+    </div>
+
+    <script>
+        document.getElementById("imageInput").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("previewImage").src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function addComment() {
+            const commentText = document.getElementById("commentInput").value;
+            if (commentText.trim() !== "") {
+                const commentDiv = document.createElement("div");
+                commentDiv.textContent = commentText;
+                document.getElementById("comments").appendChild(commentDiv);
+                document.getElementById("commentInput").value = "";
+            }
+        }
+    </script>
+
+</body>
+</html>
