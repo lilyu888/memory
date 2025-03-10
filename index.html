@@ -3,33 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页</title>
+    <title>我的日记本</title>
     <style>
         body {
-            background: linear-gradient(to right, #1e3c72, #2a5298); /* 蓝色渐变背景 */
+            background: linear-gradient(to bottom, #4A90E2, #1C3D5A); /* 蓝色渐变背景 */
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            padding: 20px;
         }
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 36px;
         }
-        p {
-            font-size: 1.2em;
-            max-width: 600px;
-            line-height: 1.6;
+        .diary-list {
+            margin-top: 30px;
+        }
+        .diary-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            margin: 10px auto;
+            width: 300px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .diary-item:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>欢迎来到我的主页</h1>
-    <p>这个页面暂时没有内容，未来可能会更新。</p >
+
+    <h1>📖 我的日记本</h1>
+    <p>记录生活点滴，与你分享我的思考。</p >
+
+    <div class="diary-list">
+        <div class="diary-item">2025-03-10 | 第一篇日记</div>
+        <div class="diary-item">2025-03-09 | 旅行记事</div>
+        <div class="diary-item">2025-03-08 | 读书感悟</div>
+    </div>
+
 </body>
 </html>
