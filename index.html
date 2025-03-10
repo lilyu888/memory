@@ -50,3 +50,44 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的日记本</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+        .diary-entry { border-bottom: 1px solid #ddd; padding: 10px 0; }
+        .date { font-weight: bold; color: #007BFF; }
+    </style>
+</head>
+<body>
+    <h1>我的日记</h1>
+    <div id="diary-container">加载中...</div>
+
+    <script>
+        async function loadDiaries() {
+            try {
+                let response = await fetch("diary.json"); // 读取 JSON 文件
+                let diaries = await response.json(); 
+
+                let container = document.getElementById("diary-container");
+                container.innerHTML = ""; // 清空原有内容
+
+                diaries.forEach(entry => {
+                    let div = document.createElement("div");
+                    div.className = "diary-entry";
+                    div.innerHTML = `<div class="date">${entry.date}</div><div>${entry.content}</div>`;
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                console.error("无法加载日记：", error);
+                document.getElementById("diary-container").innerText = "加载失败，请检查 JSON 文件。";
+            }
+        }
+
+        loadDiaries(); // 页面加载时调用
+    </script>
+</body>
+</html>
